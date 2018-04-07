@@ -1,0 +1,6 @@
+Opening the Android emulator from command line...
+
+$ emulator -list-avds
+$ emulator -avd Nexus_5x_API_23
+
+Android emulator devtool stuff on Windows - CTRL + M
