@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Text } from 'react-native';
 import { Container } from '../components/Container';
 
 // eslint-disable-next-line react/prefer-stateless-function
-class Home extends React.Component {
+class Home extends Component {
   render() {
     return (
       <Container>
