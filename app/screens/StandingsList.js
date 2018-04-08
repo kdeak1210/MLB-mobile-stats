@@ -4,10 +4,11 @@ import { View, Text } from 'react-native';
 
 // Importing this local JSON simulates the data retrieved from Sportradar API
 import standings from '../../mocks/standings-2013.json';
+import { arrayFromStandings } from '../utils/teams';
 
 class StandingsList extends Component {
   componentDidMount() {
-    console.log(standings);
+    console.log(arrayFromStandings(standings));
   }
 
   render() {
