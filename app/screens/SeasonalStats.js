@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, Text, Image, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, Text, Image, StyleSheet } from 'react-native';
 
 import { Container } from '../components/Container';
+import { HittingTable } from '../components/StatsTable';
 import Images from '../assets/images';
+import { extractHittingStats } from '../utils/stats';
 import statistics from '../../mocks/blue-jays-2015.json';
 
 const styles = StyleSheet.create({
@@ -12,11 +14,19 @@ const styles = StyleSheet.create({
 
 class SeasonalStats extends Component {
   state = {
-    showHitting: false
+    showHitting: false,
+    hittingStats: []
   };
 
+  componentDidMount() {
+    // Simulate a API request/response, and set the retrieved teams array as state
+    setTimeout(() => {
+      const hittingStats = extractHittingStats(statistics);
+      this.setState({ hittingStats });
+    }, 1000);
+  }
+
   toggleHitting = () => {
-    // console.log('Toggle Hitting');
     this.setState(prevState => ({ showHitting: !prevState.showHitting }));
   };
 
@@ -30,7 +40,11 @@ class SeasonalStats extends Component {
         <TouchableOpacity style={styles.button} onPress={this.toggleHitting}>
           <Text>Toggle Hitting</Text>
         </TouchableOpacity>
-        {this.state.showHitting && <Text>Hitting Stats</Text>}
+        <View style={{ flex: 1 }}>
+          {this.state.showHitting && (
+            <HittingTable stats={this.state.hittingStats} />
+          )}
+        </View>
       </Container>
     );
   }
