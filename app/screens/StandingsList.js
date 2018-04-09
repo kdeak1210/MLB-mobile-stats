@@ -1,20 +1,33 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, FlatList } from 'react-native';
 // StatusBar, FlatList
 
-// Importing this local JSON simulates the data retrieved from Sportradar API
+import { TeamRow } from '../components/Row';
 import standings from '../../mocks/standings-2013.json';
 import { arrayFromStandings } from '../utils/teams';
 
 class StandingsList extends Component {
+  state = {
+    teams: []
+  };
+
   componentDidMount() {
-    console.log(arrayFromStandings(standings));
+    // Simulate a API request/response, and set the retrieved teams array as state
+    setTimeout(() => {
+      const teams = arrayFromStandings(standings);
+      this.setState({ teams });
+    }, 1000);
   }
 
   render() {
     return (
       <View style={{ flex: 1 }}>
         <Text>Test Standings List Screen</Text>
+        <FlatList
+          renderItem={({ item }) => <TeamRow {...item} />}
+          data={this.state.teams}
+          keyExtractor={item => item.id}
+        />
       </View>
     );
   }
