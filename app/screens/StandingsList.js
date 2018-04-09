@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, FlatList } from 'react-native';
 // StatusBar, FlatList
 
-import { TeamRow } from '../components/Row';
+import { TeamRow, Separator } from '../components/List';
 import standings from '../../mocks/standings-2013.json';
 import { arrayFromStandings } from '../utils/teams';
 
@@ -27,6 +27,7 @@ class StandingsList extends Component {
           renderItem={({ item }) => <TeamRow {...item} />}
           data={this.state.teams}
           keyExtractor={item => item.id}
+          ItemSeparatorComponent={Separator}
         />
       </View>
     );
