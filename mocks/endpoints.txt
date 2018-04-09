@@ -6,7 +6,7 @@ template: https://api.sportradar.us/mlb/{access_level}/{version}/{language_code}
 example: http://api.sportradar.us/mlb/trial/v6.5/en/seasons/2013/REG/standings.json?api_key={MY_KEY}
 response size: 12.8 KB
 
-* blue-jays-2013.json *
+* blue-jays-2015.json *
 API Feed: 'Seasonal Statistics' [Team Feeds]
 template: https://api.sportradar.us/mlb/{access_level}/{version}/{language_code}/season/{season_year}/{mlb_season}/teams/{team_id}/statistics.{format}?api_key={your_api_key}
 example: http://api.sportradar.us/mlb/trial/v6.5/en/seasons/2015/REG/teams/1d678440-b4b1-4954-9b39-70afb3ebbcfa/statistics.json?api_key={MY_KEY}
