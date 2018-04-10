@@ -2,7 +2,8 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   teamContainer: {
-    paddingVertical: 30
+    paddingTop: 60,
+    paddingBottom: 20
   },
   teamLogo: {},
   teamDescription: {

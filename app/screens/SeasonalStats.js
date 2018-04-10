@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
-import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 
 import { Container } from '../components/Container';
 import { TeamBrand } from '../components/Brand';
+import { StatsToggle, ButtonRow } from '../components/Button';
 import { HittingTable } from '../components/StatsTable';
 import { extractHittingStats } from '../utils/stats';
 import statistics from '../../mocks/blue-jays-2015.json';
-
-const styles = StyleSheet.create({
-  teamName: { fontSize: 22, color: '#fff', fontWeight: '800' },
-  button: { alignItems: 'center', backgroundColor: '#DDD', padding: 10 }
-});
 
 class SeasonalStats extends Component {
   state = {
@@ -35,9 +31,11 @@ class SeasonalStats extends Component {
     return (
       <Container>
         <TeamBrand abbr={abbr} name={name} year={year} />
-        <TouchableOpacity style={styles.button} onPress={this.toggleHitting}>
-          <Text>Toggle Hitting</Text>
-        </TouchableOpacity>
+        <ButtonRow>
+          <StatsToggle name="hitting" onPress={this.toggleHitting} />
+          <StatsToggle name="hitting" onPress={this.toggleHitting} />
+          <StatsToggle name="hitting" onPress={this.toggleHitting} />
+        </ButtonRow>
         <View style={{ flex: 1 }}>
           {this.state.showHitting && (
             <HittingTable stats={this.state.hittingStats} />
