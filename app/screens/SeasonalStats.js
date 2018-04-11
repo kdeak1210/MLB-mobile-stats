@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { StatusBar, View } from 'react-native';
 
 import { Container } from '../components/Container';
 import { TeamBrand } from '../components/Brand';
@@ -19,7 +19,7 @@ class SeasonalStats extends Component {
     setTimeout(() => {
       const hittingStats = extractHittingStats(statistics);
       this.setState({ hittingStats });
-    }, 1000);
+    }, 500);
   }
 
   toggleHitting = () => {
@@ -30,6 +30,7 @@ class SeasonalStats extends Component {
     const { abbr, name, season: { year } } = statistics;
     return (
       <Container>
+        <StatusBar barStyle="default" translucent={false} />
         <TeamBrand abbr={abbr} name={name} year={year} />
         <ButtonRow>
           <StatsToggle name="hitting" onPress={this.toggleHitting} />

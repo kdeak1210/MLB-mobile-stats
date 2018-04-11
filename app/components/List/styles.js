@@ -29,7 +29,7 @@ export default StyleSheet.create({
     marginRight: 'auto'
   },
   separator: {
-    marginLeft: 20,
+    marginHorizontal: 16,
     backgroundColor: '#f9f9f9',
     flex: 1,
     height: 1

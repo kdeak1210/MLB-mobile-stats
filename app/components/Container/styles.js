@@ -1,15 +1,16 @@
 import { StyleSheet } from 'react-native';
 
-/** Take up the whole screen (flex: 1)
- *  Center align vertical and horizontally
- */
+export const BACKGROUND_COLOR = '#1e9932';
 
 export default StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-
-    backgroundColor: '#177C1D'
+    backgroundColor: BACKGROUND_COLOR
+  },
+  containerFluid: {
+    flex: 1,
+    backgroundColor: BACKGROUND_COLOR
   }
 });
