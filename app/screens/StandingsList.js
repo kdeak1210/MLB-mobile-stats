@@ -24,8 +24,10 @@ class StandingsList extends Component {
     }, 500);
   }
 
-  handlePressTeam = name => {
-    console.log(`Team Pressed: ${name}`);
+  handlePressTeam = id => {
+    // TODO: consider getting name, abbr (for image) and id all from here,
+    // And pass to navigation props to show to user before API call returns
+    console.log(`Team Pressed: ${id}`);
     this.props.navigation.navigate('SeasonalStats');
   };
 

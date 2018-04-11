@@ -8,6 +8,7 @@
   "plugins": ["react", "prettier"],
   "rules": {
     "camelcase": 0,
+    "func-names": 0,
     "react/jsx-filename-extension": [
       2,
       {
