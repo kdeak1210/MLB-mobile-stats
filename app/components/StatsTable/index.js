@@ -1,5 +1,5 @@
 import TableItem from './TableItem';
-import HittingTable from './HittingTable';
+import StatsTable from './StatsTable';
 import styles from './styles';
 
-export { TableItem, HittingTable, styles };
+export { TableItem, StatsTable, styles };

@@ -2,9 +2,10 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   buttonRow: {
-    paddingBottom: 20,
+    paddingBottom: 10,
     flexDirection: 'row',
-    alignItems: 'flex-start'
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   button: {
     alignItems: 'center',

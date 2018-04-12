@@ -1,7 +1,8 @@
 import { REQUEST_TEAM_STATS, RECEIVE_TEAM_STATS } from '../actions/teams';
 
 const initialState = {
-  isLoading: false
+  isLoading: false,
+  stats: {}
 };
 
 export default function reducer(state = initialState, action) {
@@ -16,8 +17,11 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         // isLoading: false,
-        [teamId]: {
-          [year]: payload
+        stats: {
+          ...state.stats,
+          [teamId]: {
+            [year]: payload
+          }
         }
       };
     }
