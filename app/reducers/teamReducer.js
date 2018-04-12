@@ -15,6 +15,7 @@ export default function reducer(state = initialState, action) {
       const { teamId, year, payload } = action;
       return {
         ...state,
+        // isLoading: false,
         [teamId]: {
           [year]: payload
         }

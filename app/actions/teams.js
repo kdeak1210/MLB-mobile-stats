@@ -1,5 +1,5 @@
 import API_KEY from '../config/sportradar';
-import { extractHittingStats } from '../utils/stats';
+import { extractSeasonalStats } from '../utils/stats';
 
 export const REQUEST_TEAM_STATS = 'REQUEST_TEAM_STATS';
 function requestTeamStats() {
@@ -12,7 +12,7 @@ export const RECEIVE_TEAM_STATS = 'RECEIVE_TEAM_STATS';
 function receiveTeamStats(json, teamId, year) {
   return {
     type: RECEIVE_TEAM_STATS,
-    payload: extractHittingStats(json),
+    payload: extractSeasonalStats(json),
     teamId,
     year
   };
