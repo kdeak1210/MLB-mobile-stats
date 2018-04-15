@@ -7,7 +7,7 @@ import styles from './styles';
 
 const TeamBrand = ({ abbr, name, year }) => (
   <View style={styles.teamContainer}>
-    <Image style={styles.teamLogo} source={Images[abbr]} />
+    <Image style={styles.teamLogo} source={Images[abbr]} resizeMode="contain" />
     <Text style={styles.teamDescription}>
       {name} Stats for {year}
     </Text>

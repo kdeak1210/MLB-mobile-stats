@@ -7,7 +7,7 @@ import TeamRecord from './TeamRecord';
 import styles from './styles';
 
 const TeamRow = ({ onPress, name, id, abbr, win, loss, win_p }) => (
-  <TouchableHighlight onPress={() => onPress(id)}>
+  <TouchableHighlight onPress={() => onPress({ id, name, abbr })}>
     <View style={styles.teamRow}>
       <TeamIcon abbr={abbr} />
       <Text style={styles.teamName}>{name}</Text>

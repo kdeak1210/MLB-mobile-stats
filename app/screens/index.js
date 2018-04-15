@@ -25,8 +25,10 @@ export default StackNavigator(
     },
     SeasonalStats: {
       screen: SeasonalStats,
-      navigationOptions: {
-        headerTitle: 'Seasonal Stats'
+      navigationOptions: ({ navigation }) => {
+        // Access title data from the params passed from the pervious component
+        const { name, year } = navigation.state.params;
+        return { headerTitle: `${name} ${year} stats` };
       }
     }
   },
