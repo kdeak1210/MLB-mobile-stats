@@ -3,8 +3,8 @@ import { StatusBar, Text } from 'react-native';
 import PropTypes from 'prop-types';
 
 import { Container } from '../components/Container';
+import { AppBrand } from '../components/Brand';
 
-// eslint-disable-next-line react/prefer-stateless-function
 class Home extends Component {
   static propTypes = {
     navigation: PropTypes.object
@@ -19,6 +19,7 @@ class Home extends Component {
     return (
       <Container>
         <StatusBar barStyle="default" translucent={false} />
+        <AppBrand />
         <Text onPress={this.onPressYear}>Go to Standings List</Text>
       </Container>
     );
