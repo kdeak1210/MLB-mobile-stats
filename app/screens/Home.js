@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { StatusBar, Text } from 'react-native';
+import { StatusBar } from 'react-native';
 import PropTypes from 'prop-types';
 
 import { Container } from '../components/Container';
 import { AppBrand } from '../components/Brand';
+import { InputWithButton } from '../components/TextInput';
 
 class Home extends Component {
   static propTypes = {
@@ -20,7 +21,12 @@ class Home extends Component {
       <Container>
         <StatusBar barStyle="default" translucent={false} />
         <AppBrand />
-        <Text onPress={this.onPressYear}>Go to Standings List</Text>
+        <InputWithButton
+          buttonText="Year"
+          onPress={this.onPressYear}
+          value="(Selected year)"
+          editable={false}
+        />
       </Container>
     );
   }
