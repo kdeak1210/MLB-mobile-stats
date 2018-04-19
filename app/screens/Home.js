@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StatusBar } from 'react-native';
+import { StatusBar, Text } from 'react-native';
 import PropTypes from 'prop-types';
 
 import { Container } from '../components/Container';
@@ -13,6 +13,10 @@ class Home extends Component {
 
   onPressYear = () => {
     // console.log('press year');
+    this.props.navigation.navigate('YearList');
+  };
+
+  onPressStandings = () => {
     this.props.navigation.navigate('StandingsList');
   };
 
@@ -27,6 +31,7 @@ class Home extends Component {
           value="(Selected year)"
           editable={false}
         />
+        <Text onPress={this.onPressStandings}>Go stats</Text>
       </Container>
     );
   }

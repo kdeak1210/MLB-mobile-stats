@@ -2,13 +2,20 @@ import { StackNavigator } from 'react-navigation';
 import { StatusBar } from 'react-native';
 
 import Home from './Home';
+import YearList from './YearList';
 import SeasonalStats from './SeasonalStats';
 import StandingsList from './StandingsList';
 
-/** Each screen takes a key: object pairing.
- *  Home is defined first, so it is the initial route (homepage)
- */
-export default StackNavigator(
+const YearListStack = new StackNavigator({
+  YearList: {
+    screen: YearList,
+    navigationOptions: {
+      headerTitle: 'Year Selection'
+    }
+  }
+});
+
+const HomeStack = new StackNavigator(
   {
     Home: {
       screen: Home,
@@ -33,7 +40,24 @@ export default StackNavigator(
     }
   },
   {
-    headerMode: 'screen', // Navbar comes and goes with screen
+    headerMode: 'screen' // Navbar comes and goes with screen
+    // navigationOptions: {
+    //   headerStyle: { height: 40 }
+    // }
+  }
+);
+
+export default StackNavigator(
+  {
+    Home: {
+      screen: HomeStack
+    },
+    YearList: {
+      screen: YearListStack
+    }
+  },
+  {
+    headerMode: 'none',
     mode: 'modal',
     cardStyle: { paddingTop: StatusBar.currentHeight }
     // navigationOptions: {
