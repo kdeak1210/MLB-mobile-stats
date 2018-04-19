@@ -2,18 +2,8 @@ import { StackNavigator } from 'react-navigation';
 import { StatusBar } from 'react-native';
 
 import Home from './Home';
-import YearList from './YearList';
 import SeasonalStats from './SeasonalStats';
 import StandingsList from './StandingsList';
-
-const YearListStack = new StackNavigator({
-  YearList: {
-    screen: YearList,
-    navigationOptions: {
-      headerTitle: 'Year Selection'
-    }
-  }
-});
 
 const HomeStack = new StackNavigator(
   {
@@ -51,9 +41,6 @@ export default StackNavigator(
   {
     Home: {
       screen: HomeStack
-    },
-    YearList: {
-      screen: YearListStack
     }
   },
   {

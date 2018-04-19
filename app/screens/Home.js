@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
-import { StatusBar, Text } from 'react-native';
+import { View, StatusBar, Text, Picker } from 'react-native';
 import PropTypes from 'prop-types';
 
 import { Container } from '../components/Container';
 import { AppBrand } from '../components/Brand';
-import { InputWithButton } from '../components/TextInput';
+
+const YEARS = ['2012', '2013', '2014', '2015', '2016'];
 
 class Home extends Component {
   static propTypes = {
     navigation: PropTypes.object
   };
 
-  onPressYear = () => {
-    // console.log('press year');
-    this.props.navigation.navigate('YearList');
+  state = {
+    selectedYear: '2016'
+  };
+
+  onSelectYear = event => {
+    console.log(event);
+    // this.props.navigation.navigate('YearList');
   };
 
   onPressStandings = () => {
@@ -25,13 +30,27 @@ class Home extends Component {
       <Container>
         <StatusBar barStyle="default" translucent={false} />
         <AppBrand />
-        <InputWithButton
-          buttonText="Year"
-          onPress={this.onPressYear}
-          value="(Selected year)"
-          editable={false}
-        />
-        <Text onPress={this.onPressStandings}>Go stats</Text>
+        <View style={{ borderColor: 'black', borderWidth: 1 }}>
+          <Picker
+            selectedValue={this.state.selectedYear}
+            style={{
+              height: 50,
+              width: 150
+            }}
+            onValueChange={itemValue => {
+              console.log(itemValue);
+              this.setState({ selectedYear: itemValue });
+            }}
+          >
+            {YEARS.map(year => (
+              <Picker.Item key={year} label={year} value={year} />
+            ))}
+          </Picker>
+        </View>
+
+        <Text onPress={this.onPressStandings}>
+          View Stats for {this.state.selectedYear}
+        </Text>
       </Container>
     );
   }
