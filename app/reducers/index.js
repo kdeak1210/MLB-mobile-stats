@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-// import standingsReducer from './standingsReducer';
+import standingsReducer from './standingsReducer';
 import teamReducer from './teamReducer';
 
 export default combineReducers({
-  // standings: standingsReducer,
+  standings: standingsReducer,
   team: teamReducer
 });

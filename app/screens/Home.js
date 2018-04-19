@@ -1,27 +1,26 @@
 import React, { Component } from 'react';
 import { StatusBar, Text } from 'react-native';
 import PropTypes from 'prop-types';
+import { Ionicons } from '@expo/vector-icons';
+import { connect } from 'react-redux';
 
 import { Container } from '../components/Container';
 import { AppBrand } from '../components/Brand';
 import { YearPicker } from '../components/Pickers';
+import { yearSelected } from '../actions/standings';
 
 class Home extends Component {
   static propTypes = {
-    navigation: PropTypes.object
-  };
-
-  state = {
-    selectedYear: '2016'
+    navigation: PropTypes.object,
+    selectedYear: PropTypes.string,
+    yearSelected: PropTypes.func
   };
 
   onSelectYear = event => {
-    console.log(event);
-    // TODO: Dispatch to Redux
-    // this.setState({ selectedYear: event });
+    this.props.yearSelected(event);
   };
 
-  onPressStandings = () => {
+  onPressViewStandings = () => {
     this.props.navigation.navigate('StandingsList');
   };
 
@@ -31,15 +30,20 @@ class Home extends Component {
         <StatusBar barStyle="default" translucent={false} />
         <AppBrand />
         <YearPicker
-          selectedYear={this.state.selectedYear}
+          selectedYear={this.props.selectedYear}
           onSelectYear={this.onSelectYear}
         />
-        <Text onPress={this.onPressStandings}>
-          View Stats for {this.state.selectedYear}
+        <Ionicons name="md-stats" size={32} color="gray" />
+        <Text onPress={this.onPressViewStandings}>
+          View Standings for {this.props.selectedYear}
         </Text>
       </Container>
     );
   }
 }
 
-export default Home;
+const stateToProps = state => ({
+  selectedYear: state.standings.selectedYear
+});
+
+export default connect(stateToProps, { yearSelected })(Home);

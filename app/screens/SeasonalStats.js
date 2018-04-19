@@ -10,14 +10,14 @@ import { fetchTeamStats } from '../actions/teams';
 
 class SeasonalStats extends Component {
   static propTypes = {
-    dispatch: PropTypes.func,
+    fetchTeamStats: PropTypes.func,
     navigation: PropTypes.object,
     team: PropTypes.object
   };
 
   componentDidMount() {
     const { teamId, year } = this.props.navigation.state.params;
-    this.props.dispatch(fetchTeamStats(teamId, year));
+    this.props.fetchTeamStats(teamId, year);
   }
 
   render() {
@@ -38,6 +38,8 @@ class SeasonalStats extends Component {
   }
 }
 
-export default connect(state => ({
+const stateToProps = state => ({
   team: state.team
-}))(SeasonalStats);
+});
+
+export default connect(stateToProps, { fetchTeamStats })(SeasonalStats);

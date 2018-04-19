@@ -10,7 +10,7 @@ function requestTeamStats() {
 
 export const RECEIVE_TEAM_STATS = 'RECEIVE_TEAM_STATS';
 function receiveTeamStats(json, teamId, year) {
-  console.log(json, teamId, year);
+  // console.log(json, teamId, year);
   return {
     type: RECEIVE_TEAM_STATS,
     payload: extractSeasonalStats(json),
