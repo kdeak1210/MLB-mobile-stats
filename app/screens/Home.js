@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { View, StatusBar, Text, Picker } from 'react-native';
+import { StatusBar, Text } from 'react-native';
 import PropTypes from 'prop-types';
 
 import { Container } from '../components/Container';
 import { AppBrand } from '../components/Brand';
-
-const YEARS = ['2012', '2013', '2014', '2015', '2016'];
+import { YearPicker } from '../components/Pickers';
 
 class Home extends Component {
   static propTypes = {
@@ -18,7 +17,8 @@ class Home extends Component {
 
   onSelectYear = event => {
     console.log(event);
-    // this.props.navigation.navigate('YearList');
+    // TODO: Dispatch to Redux
+    // this.setState({ selectedYear: event });
   };
 
   onPressStandings = () => {
@@ -30,24 +30,10 @@ class Home extends Component {
       <Container>
         <StatusBar barStyle="default" translucent={false} />
         <AppBrand />
-        <View style={{ borderColor: 'black', borderWidth: 1 }}>
-          <Picker
-            selectedValue={this.state.selectedYear}
-            style={{
-              height: 50,
-              width: 150
-            }}
-            onValueChange={itemValue => {
-              console.log(itemValue);
-              this.setState({ selectedYear: itemValue });
-            }}
-          >
-            {YEARS.map(year => (
-              <Picker.Item key={year} label={year} value={year} />
-            ))}
-          </Picker>
-        </View>
-
+        <YearPicker
+          selectedYear={this.state.selectedYear}
+          onSelectYear={this.onSelectYear}
+        />
         <Text onPress={this.onPressStandings}>
           View Stats for {this.state.selectedYear}
         </Text>
