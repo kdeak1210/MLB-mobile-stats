@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { StatusBar, Text } from 'react-native';
+import { StatusBar } from 'react-native';
 import PropTypes from 'prop-types';
-import { Ionicons } from '@expo/vector-icons';
 import { connect } from 'react-redux';
 
 import { Container } from '../components/Container';
 import { AppBrand } from '../components/Brand';
 import { YearPicker } from '../components/Pickers';
+import { StandingsButton } from '../components/Button';
 import { yearSelected } from '../actions/standings';
 
 class Home extends Component {
@@ -33,10 +33,10 @@ class Home extends Component {
           selectedYear={this.props.selectedYear}
           onSelectYear={this.onSelectYear}
         />
-        <Ionicons name="md-stats" size={32} color="gray" />
-        <Text onPress={this.onPressViewStandings}>
-          View Standings for {this.props.selectedYear}
-        </Text>
+        <StandingsButton
+          onPress={this.onPressViewStandings}
+          selectedYear={this.props.selectedYear}
+        />
       </Container>
     );
   }

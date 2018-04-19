@@ -5,7 +5,7 @@ const IMAGE_WIDTH = Dimensions.get('window').width / 2;
 export default StyleSheet.create({
   appContainer: {
     alignItems: 'center',
-    paddingBottom: 40
+    paddingBottom: 20
   },
   appLogoContainer: {
     width: IMAGE_WIDTH,
