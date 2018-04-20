@@ -1,31 +1,35 @@
 import React, { Component } from 'react';
 import { StatusBar, FlatList } from 'react-native';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import { ContainerFluid } from '../components/Container';
 import { TeamRow, Separator } from '../components/List';
-import standings from '../../mocks/standings-2013.json';
-import { arrayFromStandings } from '../utils/teams';
+import { fetchStandings } from '../actions/standings';
+// import standings from '../../mocks/standings-2013.json';
 
 class StandingsList extends Component {
   static propTypes = {
-    navigation: PropTypes.object
+    navigation: PropTypes.object,
+    fetchStandings: PropTypes.func,
+    standings: PropTypes.object
   };
 
-  state = {
-    teams: []
-  };
+  // state = {
+  //   teams: []
+  // };
 
   componentDidMount() {
     // Simulate a API request/response, and set the retrieved teams array as state
-    setTimeout(() => {
-      const teams = arrayFromStandings(standings);
-      this.setState({ teams });
-    }, 500);
+    // setTimeout(() => {
+    //   const teams = arrayFromStandings(standings);
+    //   this.setState({ teams });
+    // }, 500);
+    const { selectedYear } = this.props.navigation.state.params;
+    this.props.fetchStandings(selectedYear);
   }
 
   handlePressTeam = ({ id, name, abbr }) => {
-    // TODO: GET YEAR FROM NAVIGATION PROPS
     this.props.navigation.navigate('SeasonalStats', {
       teamId: id,
       name,
@@ -35,6 +39,8 @@ class StandingsList extends Component {
   };
 
   render() {
+    const { selectedYear } = this.props.navigation.state.params;
+    const teams = this.props.standings[selectedYear] || [];
     return (
       <ContainerFluid>
         <StatusBar barStyle="default" translucent={false} />
@@ -42,7 +48,7 @@ class StandingsList extends Component {
           renderItem={({ item }) => (
             <TeamRow onPress={this.handlePressTeam} {...item} />
           )}
-          data={this.state.teams}
+          data={teams}
           keyExtractor={item => item.id}
           ItemSeparatorComponent={Separator}
         />
@@ -51,4 +57,8 @@ class StandingsList extends Component {
   }
 }
 
-export default StandingsList;
+const stateToProps = state => ({
+  standings: state.standings.standingsMap
+});
+
+export default connect(stateToProps, { fetchStandings })(StandingsList);

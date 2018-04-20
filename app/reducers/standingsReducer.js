@@ -1,14 +1,32 @@
-import { YEAR_SELECTED } from '../actions/standings';
+import {
+  YEAR_SELECTED,
+  REQUEST_STANDINGS,
+  RECEIVE_STANDINGS
+} from '../actions/standings';
 
 const initialState = {
-  selectedYear: '2016',
-  standings: {}
+  isLoading: false,
+  selectedYear: '2017',
+  standingsMap: {}
 };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case YEAR_SELECTED:
       return { ...state, selectedYear: action.year };
+    case REQUEST_STANDINGS:
+      // return { ...state, isLoading: true }
+      return state;
+    case RECEIVE_STANDINGS: {
+      const { year, payload } = action;
+      return {
+        ...state,
+        standingsMap: {
+          ...state.standingsMap,
+          [year]: payload
+        }
+      };
+    }
     default:
       return state;
   }
@@ -16,13 +34,14 @@ export default function reducer(state = initialState, action) {
 
 /*
 Standings reducer
-Store standings on the store as keys with the season iD OR the YEAR (is unique among seasons standings)
+Store standings on the store as keys with YEAR (is unique among seasons standings)
 SUCH AS
 Store {
+  isLoading: false
   selectedYear: 2016,
   standings {
-    58dd9a81-4a38-4a66-8cd7-32ae4d567ba8: { * DATA HERE * },
-    28dc9c24-9a24-9ac6-cc29-4c2ecd947b2c: { * DATA HERE * }
+    2016: { * DATA HERE * },
+    2015: { * DATA HERE * }
   }
 }
 */

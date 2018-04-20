@@ -10,7 +10,6 @@ function requestTeamStats() {
 
 export const RECEIVE_TEAM_STATS = 'RECEIVE_TEAM_STATS';
 function receiveTeamStats(json, teamId, year) {
-  // console.log(json, teamId, year);
   return {
     type: RECEIVE_TEAM_STATS,
     payload: extractSeasonalStats(json),
@@ -22,7 +21,6 @@ function receiveTeamStats(json, teamId, year) {
 // THUNK action creators can return functions, passing dispatch method as args
 export function fetchTeamStats(teamId, year) {
   return function(dispatch) {
-    console.log('Fetch from action');
     // Dispatch to update app state that API call is starting
     dispatch(requestTeamStats());
 

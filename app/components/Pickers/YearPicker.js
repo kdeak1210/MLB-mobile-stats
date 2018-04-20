@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 
 // Years allowed with the SprotRadar trial API
-const YEARS = ['2012', '2013', '2014', '2015', '2016'];
+const YEARS = ['2013', '2014', '2015', '2016', '2017'];
 
-const YearPicker = ({ selectedYear = '2016', onSelectYear }) => (
+const YearPicker = ({ selectedYear, onSelectYear }) => (
   <View style={styles.container}>
     <Picker
       selectedValue={selectedYear}

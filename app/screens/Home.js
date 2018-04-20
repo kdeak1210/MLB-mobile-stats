@@ -21,21 +21,23 @@ class Home extends Component {
   };
 
   onPressViewStandings = () => {
-    this.props.navigation.navigate('StandingsList');
+    const { navigation, selectedYear } = this.props;
+    navigation.navigate('StandingsList', { selectedYear });
   };
 
   render() {
+    const { selectedYear } = this.props;
     return (
       <Container>
         <StatusBar barStyle="default" translucent={false} />
         <AppBrand />
         <YearPicker
-          selectedYear={this.props.selectedYear}
+          selectedYear={selectedYear}
           onSelectYear={this.onSelectYear}
         />
         <StandingsButton
+          selectedYear={selectedYear}
           onPress={this.onPressViewStandings}
-          selectedYear={this.props.selectedYear}
         />
       </Container>
     );
