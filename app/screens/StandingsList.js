@@ -30,11 +30,12 @@ class StandingsList extends Component {
   }
 
   handlePressTeam = ({ id, name, abbr }) => {
+    const { selectedYear } = this.props.navigation.state.params;
     this.props.navigation.navigate('SeasonalStats', {
       teamId: id,
       name,
       abbr,
-      year: 2015
+      year: selectedYear
     });
   };
 

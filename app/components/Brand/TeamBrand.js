@@ -17,7 +17,7 @@ const TeamBrand = ({ abbr, name, year }) => (
 TeamBrand.propTypes = {
   abbr: PropTypes.string,
   name: PropTypes.string,
-  year: PropTypes.number
+  year: PropTypes.string
 };
 
 export default TeamBrand;
